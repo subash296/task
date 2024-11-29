@@ -55,11 +55,12 @@ function Items() {
     const afterDelete=itemDetails.filter((data,i)=>i !==index)
     setitemDetails(afterDelete)
   }
-
-  const totalAmount = itemDetails.reduce((total, item) => {
+  let totalAmount=0
+if(itemDetails.length){
+ totalAmount = itemDetails.reduce((total, item) => {
     return total + item.amount || 0;
   }, 0)
-
+}
 
 
   return (
