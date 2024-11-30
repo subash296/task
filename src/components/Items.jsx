@@ -4,18 +4,23 @@ import { FaTrashCan } from "react-icons/fa6";
 
 
 function Items() {
-  const [itemDetails, setitemDetails] = useState(() => {
-    const saveditemDetails = localStorage.getItem('itemDetails');
-    return saveditemDetails ? JSON.parse(saveditemDetails) : [
+
+
+
+  const [itemDetails, setitemDetails] = useState(()=>{
+    const savedItemDetails = localStorage.getItem('itemDetails');
+    return savedItemDetails ? JSON.parse(savedItemDetails) : [
       {
         item: "",
         quantity: "",
         rate: "",
         amount: "",
-        
-      },
-    ]; 
-  });
+      }
+
+    ]
+  })
+   
+
 
   useEffect(()=>{
     const datas=localStorage.getItem('itemDetails')
@@ -37,7 +42,7 @@ function Items() {
     }
     setitemDetails(updateditemDetails); 
   };
-  console.log(itemDetails)
+  
 
   const addNew = () => {
     setitemDetails([
@@ -51,12 +56,11 @@ function Items() {
     ]);
   };
   const handleDelete=(index)=>{
-   
     const afterDelete=itemDetails.filter((data,i)=>i !==index)
     setitemDetails(afterDelete)
   }
   let totalAmount=0
-if(itemDetails.length){
+if(itemDetails && itemDetails.length){
  totalAmount = itemDetails.reduce((total, item) => {
     return total + item.amount || 0;
   }, 0)

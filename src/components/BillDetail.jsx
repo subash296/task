@@ -79,7 +79,7 @@ function BillDetail() {
           <tbody>
           
             {
-              billDetails.map((item,index)=>(
+              billDetails?.map((item,index)=>(
                 <tr key={index}>
                   <td className='border border-black px-8 py-3'><button className='text-2xl text-white bg-red-500 p-3' onClick={(()=>handleDelete(index))}><FaTrashCan /></button></td>
                   <td className='border border-black px-8 py-3'><input name='billNo' className='h-full w-full border-none outline-none text-black text-xl' type="text" value={item.billNo} onChange={(e)=>handleChange(e,index)} /></td>
